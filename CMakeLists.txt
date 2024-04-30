@@ -16,7 +16,8 @@
 
 cmake_minimum_required(VERSION 3.11)
 project(fd_sdk_vendor)
-set(FD_SDK_VERSION "3.16.1")
+# set(FD_SDK_VERSION "3.16.1")
+set(FD_SDK_VERSION "3.17.1")
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17) # Default to C++17
@@ -27,15 +28,16 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(libusb REQUIRED libusb-1.0)
 
 find_package(ament_cmake REQUIRED)
-include(FetchContent)
+# include(FetchContent)
 
-# Downdload SDK binaries
-#------------------------
-fetchcontent_declare(
-  fd_sdk_binaries
-  URL      https://www.forcedimension.com/downloads/sdk/sdk-${FD_SDK_VERSION}-linux-x86_64-gcc.tar.gz
-)
-fetchcontent_makeavailable(fd_sdk_binaries)
+# # Downdload SDK binaries
+# #------------------------
+# fetchcontent_declare(
+#   fd_sdk_binaries
+#   URL      https://www.forcedimension.com/downloads/sdk/sdk-${FD_SDK_VERSION}-linux-x86_64-gcc.tar.gz
+# )
+# fetchcontent_makeavailable(fd_sdk_binaries)
+set(fd_sdk_binaries_SOURCE_DIR "${CMAKE_SOURCE_DIR}/external/sdk-${FD_SDK_VERSION}")
 
 # Set DHD and DRD library paths
 #-------------------------------
